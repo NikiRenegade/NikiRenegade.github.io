@@ -16,10 +16,10 @@ import { Product } from './types/Product';
 // Создает случайный продукт (Product).
 // Принимает дату создания (строка)
 export const createRandomProduct = (createdAt: string): Product => {
-  let productNameWithCategory: ProductForRandomGenerate =
+  const productNameWithCategory: ProductForRandomGenerate =
     ProductsForRandomGenerate[Math.floor(Math.random() * ProductsForRandomGenerate.length)];
-  let randomId = Math.random().toString(36).substring(2, 9);
-  let randomPrice = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;
+  const randomId = Math.random().toString(36).substring(2, 9);
+  const randomPrice = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;
 
   return {
     id: randomId,
@@ -36,11 +36,11 @@ export const createRandomProduct = (createdAt: string): Product => {
 // Создает случайную операцию (Operation).
 // Принимает дату создания (строка)
 export const createRandomOperation = (createdAt: string): Operation => {
-  let randomOperationCategory =
+  const randomOperationCategory =
     CategoriesForRandomGenerate[Math.floor(Math.random() * CategoriesForRandomGenerate.length)];
-  let randomId = Math.random().toString(36).substring(2, 9);
-  let randomAmount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
-  let isCost = Math.random() < 0.5;
+  const randomId = Math.random().toString(36).substring(2, 9);
+  const randomAmount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+  const isCost = Math.random() < 0.5;
 
   return isCost
     ? {
