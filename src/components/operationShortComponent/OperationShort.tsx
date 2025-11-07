@@ -1,5 +1,5 @@
 import React from 'react';
-import './opetationShort.scss';
+import './opetationShort.module.scss';
 interface OperationShortProps {
   title: string;
   category: string;
