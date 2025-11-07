@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { OperationShort } from './OperationShort';
 
@@ -21,7 +21,7 @@ export const Positive: Story = {
     title: 'Получение заработной платы',
     category: 'ЗП',
     description: 'Оплата за первую половину месяца',
-    amount: '150000',
+    amount: 150000,
   },
 };
 export const Negative: Story = {
@@ -29,6 +29,6 @@ export const Negative: Story = {
     title: 'Покупка в магазине',
     category: 'Продуктовый магазин',
     description: 'Ненужная покупка в продуктовом магазине.',
-    amount: '-5000',
+    amount: -5000,
   },
 };
