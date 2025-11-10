@@ -1,3 +1,4 @@
+@import '../../styles/variables';
 .html{
   height: 100%;
 }
@@ -8,7 +9,7 @@
   flex-direction: column;
   height: 100%;
 
-  &__input{
+  &__input {
     padding: 10px;
     width: 25%;
     border: 1px solid #ccc;
@@ -16,30 +17,35 @@
     margin-bottom: 8px;
     font-size: 16px;
 
-    &:hover{
+    &:hover {
       border-color: rgba(1, 7, 255, 0.11);
       box-shadow: 0 0 10px rgba(0, 59, 255, 0.22);
     }
+
     &:focus {
       outline: none;
       border-color: #0004df;
       box-shadow: 0 0 5px rgba(0, 35, 152, 0.5);
-  }
+    }
 
-  }
-  &__button {
-    padding: 10px 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-
-    &:hover {
-      background-color: #0056b3;
-      box-shadow: 0 0 5px rgb(255, 0, 0);
+    .dark & {
+      background-color: $color-bg-dark;
+      color: $color-text-dark;
     }
   }
-}
+    &__button {
+      padding: 10px 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+        box-shadow: 0 0 5px rgb(255, 0, 0);
+      }
+    }
+  }

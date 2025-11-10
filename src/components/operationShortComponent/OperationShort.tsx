@@ -1,21 +1,25 @@
-import React from 'react';
-import './opetationShort.module.scss';
+import React, { useContext } from 'react';
+import { OperationShortModel } from '../../entities/OperationShortModel';
+import styles from './opetationShort.module.scss';
+import { ThemeContext } from '../../contexts/ThemeContext';
 interface OperationShortProps {
-  title: string;
-  category: string;
-  description: string;
-  amount: number;
+  operation: OperationShortModel;
 }
-export function OperationShort({ title, category, description, amount }: OperationShortProps) {
+export function OperationShort({ operation }: OperationShortProps) {
+  const { theme } = useContext(ThemeContext);
+  const { title, category, description, amount } = operation;
+
   return (
-    <div className="operation-short">
-      <div className="operation-short__left">
-        <h3 className="operation-short__title">{title}</h3>
-        <p className="operation-short__category">{category}</p>
+    <div className={`${styles['operation-short']} ${styles[theme]}`}>
+      <div className={styles['operation-short__left']}>
+        <h3 className={styles['operation-short__title']}>{title}</h3>
+        <p className={styles['operation-short__category']}>{category}</p>
       </div>
-      <div className="operation-short__right">
-        <h3 className={`operation-short__amount ${amount > 0 ? 'positive' : 'negative'}`}>{amount}</h3>
-        <p className="operation-short__description">{description}</p>
+      <div className={styles['operation-short__right']}>
+        <h3 className={`${styles['operation-short__amount']} ${amount > 0 ? styles.positive : styles.negative}`}>
+          {amount}
+        </h3>
+        <p className={styles['operation-short__description']}>{description}</p>
       </div>
     </div>
   );
