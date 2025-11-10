@@ -1,9 +1,53 @@
 import { Category } from '../types/Category';
+import { OperationCategory } from '../types/OperationCategory';
 
 export type ProductForRandomGenerate = {
   name: string;
   category: Category;
 };
+export let OperationCategoriesForRandomGenerate: OperationCategory[] = [
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Магазин',
+    type: 'cost',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Аренда',
+    type: 'cost',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Одежда',
+    type: 'cost',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Кафе',
+    type: 'cost',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Заработная плата',
+    type: 'profit',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Премия',
+    type: 'profit',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Выполнение заказа',
+    type: 'profit',
+  },
+  {
+    id: Math.random().toString(36).substring(2, 9),
+    name: 'Перевод',
+    type: 'profit',
+  },
+];
+
 export let CategoriesForRandomGenerate: Category[] = [
   {
     id: Math.random().toString(36).substring(2, 9),
@@ -23,6 +67,7 @@ export let CategoriesForRandomGenerate: Category[] = [
     name: 'Книги',
   },
 ];
+
 export let ProductsForRandomGenerate: ProductForRandomGenerate[] = [
   {
     name: 'Хлеб',

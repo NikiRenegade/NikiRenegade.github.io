@@ -7,11 +7,14 @@
 
 import {
   CategoriesForRandomGenerate,
+  OperationCategoriesForRandomGenerate,
   ProductForRandomGenerate,
-  ProductsForRandomGenerate,
+  ProductsForRandomGenerate
 } from './helper/ProductRandomList';
 import { Operation } from './types/Operation';
 import { Product } from './types/Product';
+import { OperationShortModel } from '../../entities/OperationShortModel';
+import { OperationCategory } from '../../homeworks/ts1/types/OperationCategory';
 
 // Создает случайный продукт (Product).
 // Принимает дату создания (строка)
@@ -60,5 +63,28 @@ export const createRandomOperation = (createdAt: string): Operation => {
         amount: randomAmount,
         category: randomOperationCategory,
         type: 'Profit',
+      };
+};
+
+export const createRandomOperationShort = (): OperationShortModel => {
+  const randomAmount = Math.floor(Math.random() * (250000 - -250000 + 1)) + -250000;
+
+  const isCost = randomAmount < 0;
+  const categories = isCost
+    ? OperationCategoriesForRandomGenerate.filter((c) => c.type === 'cost')
+    : OperationCategoriesForRandomGenerate.filter((c) => c.type === 'profit');
+  const randomOperationCategory: OperationCategory = categories[Math.floor(Math.random() * categories.length)];
+  return isCost
+    ? {
+        title: `Трата на : ${randomOperationCategory.name}`,
+        description: Math.random() < 0.5 ? 'Описание траты' : undefined,
+        amount: randomAmount,
+        category: randomOperationCategory.name,
+      }
+    : {
+        title: `Доход от : ${randomOperationCategory.name}`,
+        description: Math.random() < 0.5 ? 'Описание дохода' : undefined,
+        amount: randomAmount,
+        category: randomOperationCategory.name,
       };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import './operationFull.scss';
+import './operationFull.module.scss';
 interface OperationFullProps {
   title: string;
   category: string;

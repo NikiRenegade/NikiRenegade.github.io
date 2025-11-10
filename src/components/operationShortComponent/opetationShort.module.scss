@@ -1,8 +1,10 @@
+@import '../../styles/variables';
+
 .operation-short {
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
-  background-color: #fff;
+  width: 500px;
+
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 16px;
@@ -29,16 +31,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  &__category {
-    font-size: 16px;
-    color: #979797;
-    margin-top: 7px;
-    margin-bottom: 0;
-
-  }
+  &__category,
   &__description {
     font-size: 16px;
-    color: #979797;
     margin-top: 7px;
     margin-bottom: 0;
     max-width: 250px;
@@ -55,6 +50,26 @@
     }
     &.negative {
       color: #d9534f;
+    }
+  }
+
+  &.light {
+    background-color: $color-bg-light;
+    color: $color-text-light;
+
+    & .operation-short__category,
+    & .operation-short__description {
+      color: #979797;
+    }
+  }
+
+  &.dark {
+    background-color: $color-bg-dark;
+    color: $color-text-dark;
+
+    & .operation-short__category,
+    & .operation-short__description {
+      color: #c0c0c0;
     }
   }
 }
