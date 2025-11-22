@@ -1,5 +1,6 @@
-import React from 'react';
-import './modal.module.scss';
+import React, { useContext } from 'react';
+import styles from './modal.module.scss';
+import { ThemeContext } from '../../contexts/ThemeContext';
 interface ModalProps {
   visible: boolean;
   children: React.ReactNode;
@@ -7,14 +8,15 @@ interface ModalProps {
 }
 
 export function Modal({ visible, children, onClose }: ModalProps) {
+  const { theme } = useContext(ThemeContext);
   if (visible) {
     return (
-      <div className="modal__overlay">
-        <div className="modal__window">
-          <button className="modal__close" onClick={onClose}>
+      <div className={`${styles.modal__overlay} `}>
+        <div className={`${styles.modal__window} ${styles[theme]}`}>
+          <button className={styles.modal__close} onClick={onClose}>
             x
           </button>
-          <div className="modal__content">{children}</div>
+          <div className={styles.modal__content}>{children}</div>
         </div>
       </div>
     );
