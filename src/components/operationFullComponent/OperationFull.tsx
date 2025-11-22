@@ -11,19 +11,17 @@ interface OperationFullProps {
 export function OperationFull({ title, category, description, amount, dateTime, categoryColor }: OperationFullProps) {
   const parsedDate = new Date(dateTime);
 
-  // Дата: 16 октября 2025
   const datePart = parsedDate.toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
-
-  // Время: 14:38
   const timePart = parsedDate.toLocaleTimeString('ru-RU', {
     hour: 'numeric',
     minute: 'numeric',
   });
   const formattedDateTime = `${datePart} в ${timePart}`;
+
   return (
     <div className="operation-full">
       <div className="operation-full__header" style={{ backgroundColor: categoryColor }}>
