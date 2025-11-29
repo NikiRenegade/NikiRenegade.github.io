@@ -5,7 +5,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 interface OperationShortProps {
   operation: OperationShortModel;
 }
-export function OperationShort({ operation }: OperationShortProps) {
+function OperationShort({ operation }: OperationShortProps) {
   const { theme } = useContext(ThemeContext);
   const { title, category, description, amount } = operation;
 
@@ -24,3 +24,4 @@ export function OperationShort({ operation }: OperationShortProps) {
     </div>
   );
 }
+export const OperationShortMemo = React.memo<OperationShortProps>(OperationShort);
