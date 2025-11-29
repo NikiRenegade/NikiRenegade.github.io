@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { OperationShort } from './OperationShort';
+import { OperationShortMemo } from './OperationShort';
 import { ThemeProvider } from '../../contexts/ThemeContext';
 import React from 'react';
 
-const meta: Meta<typeof OperationShort> = {
+const meta: Meta<typeof OperationShortMemo> = {
   title: 'Components/OperationShort',
-  component: OperationShort,
+  component: OperationShortMemo,
   argTypes: {
     operation: { control: 'object' },
   },
@@ -20,7 +20,7 @@ const meta: Meta<typeof OperationShort> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof OperationShort>;
+type Story = StoryObj<typeof OperationShortMemo>;
 
 export const Positive: Story = {
   args: {
