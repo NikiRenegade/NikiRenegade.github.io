@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import styles from './operationList.module.scss';
 import { OperationShortModel } from '../../entities/OperationShortModel';
-import { OperationShort } from '../operationShortComponent/OperationShort';
+import { OperationShortMemo } from '../operationShortComponent/OperationShort';
 import { createRandomOperationShort } from '../../homeworks/ts1/3_write';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
@@ -30,7 +30,7 @@ export function OperationList({ operations }: OperationListProps) {
     <div className={`${styles.operation - list} ${styles[theme]}`} data-test={theme}>
       {list.map((operation, index) => (
         <div className={styles['operation-list__item']} key={index}>
-          <OperationShort operation={operation} />
+          <OperationShortMemo operation={operation} />
         </div>
       ))}
       <div ref={loaderRef} className={styles['operation-list__loader']}>

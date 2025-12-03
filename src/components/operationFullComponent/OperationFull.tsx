@@ -1,5 +1,6 @@
-import React from 'react';
-import './operationFull.module.scss';
+import React, { useMemo, useContext } from 'react';
+import styles from './operationFull.module.scss';
+import { ThemeContext } from '../../contexts/ThemeContext';
 interface OperationFullProps {
   title: string;
   category: string;
@@ -9,32 +10,35 @@ interface OperationFullProps {
   categoryColor: string;
 }
 export function OperationFull({ title, category, description, amount, dateTime, categoryColor }: OperationFullProps) {
-  const parsedDate = new Date(dateTime);
-
-  const datePart = parsedDate.toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-  const timePart = parsedDate.toLocaleTimeString('ru-RU', {
-    hour: 'numeric',
-    minute: 'numeric',
-  });
-  const formattedDateTime = `${datePart} в ${timePart}`;
-
+  const formattedDateTime = useMemo(() => {
+    const parsedDate = new Date(dateTime);
+    const datePart = parsedDate.toLocaleDateString('ru-RU', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    const timePart = parsedDate.toLocaleTimeString('ru-RU', {
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+    return `${datePart} в ${timePart}`;
+  }, [dateTime]);
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="operation-full">
-      <div className="operation-full__header" style={{ backgroundColor: categoryColor }}>
-        <p className="operation-full__date-time">{formattedDateTime}</p>
-        <button className="operation-full__edit-button">✏️</button>
+    <div className={`${styles['operation-full']} ${styles[theme]}`}>
+      <div className={styles['operation-full__header']} style={{ backgroundColor: categoryColor }}>
+        <p className={styles['operation-full__date-time']}>{formattedDateTime}</p>
+        <button className={styles['operation-full__edit-button']}>✏️</button>
       </div>
-      <div className="operation-full__main">
-        <div className="operation-full__title">{title}</div>
-        <div className="operation-full__category">{category}</div>
-        <h3 className={`operation-full__amount ${amount > 0 ? 'positive' : 'negative'}`}>{amount}</h3>
+      <div className={styles['operation-full__main']}>
+        <div className={styles['operation-full__title']}>{title}</div>
+        <div className={styles['operation-full__category']}>{category}</div>
+        <h3 className={`${styles['operation-full__amount']} ${amount > 0 ? styles.positive : styles.negative}`}>
+          {amount}
+        </h3>
       </div>
-      <div className="operation-full__footer">
-        <p className="operation-full__description">{description}</p>
+      <div className={styles['operation-full__footer']}>
+        <p className={styles['operation-full__description']}>{description}</p>
       </div>
     </div>
   );
